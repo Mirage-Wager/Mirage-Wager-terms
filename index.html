@@ -1,82 +1,225 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Termos de Uso e Condições de Serviço — Mirage Wager desgraça </title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Termos de Uso — Mirage Wager</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      font-family: "Segoe UI", Roboto, Arial, sans-serif;
-      line-height: 1.6;
-      color: #222;
-      background-color: #f9f9f9;
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
-    main {
-      max-width: 900px;                                                
-      background: #fff;
-      margin: 40px auto;
-      padding: 40px 50px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #e2e8f0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      padding: 20px;
+      background: #05070f;
     }
-    h1, h2 {
-      color: #1a1a1a;
+
+    /* ===== FUNDO ARTÍSTICO COLORIDO ===== */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -20%;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(0,207,255,0.35), transparent 40%),
+        radial-gradient(circle at 80% 30%, rgba(138,43,226,0.35), transparent 45%),
+        radial-gradient(circle at 50% 80%, rgba(0,255,170,0.25), transparent 40%),
+        radial-gradient(circle at 10% 90%, rgba(255,0,128,0.25), transparent 45%);
+      filter: blur(120px);
+      z-index: -2;
     }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(5,7,15,0.6), rgba(5,7,15,0.9));
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: rgba(10, 15, 30, 0.65);
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      overflow: hidden;
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    .header {
+      background: linear-gradient(135deg, rgba(0,10,30,0.8), rgba(0,40,80,0.6));
+      padding: 50px 40px 40px;
+    }
+
     h1 {
-      font-size: 1.9em;
-      margin-bottom: 10px;
+      font-size: 2.4rem;
+      background: linear-gradient(90deg, #ffffff, #00CFFF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
+
+    .subtitle {
+      color: #94a3b8;
+      margin-top: 10px;
+    }
+
+    .update-date {
+      margin-top: 20px;
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 20px;
+      background: rgba(0,207,255,0.15);
+      border: 1px solid rgba(0,207,255,0.3);
+      color: #00CFFF;
+      font-size: 0.9rem;
+    }
+
+    .content {
+      padding: 40px;
+    }
+
+    .section-card {
+      background: rgba(15, 23, 42, 0.55);
+      border-radius: 18px;
+      padding: 26px;
+      margin-bottom: 28px;
+      border: 1px solid rgba(255,255,255,0.06);
+      backdrop-filter: blur(10px);
+      transition: 0.3s ease;
+    }
+
+    .section-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(0,207,255,0.3);
+    }
+
     h2 {
-      font-size: 1.3em;
-      margin-top: 30px;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 4px;
+      color: #00CFFF;
+      margin-bottom: 15px;
+      font-size: 1.4rem;
     }
+
     p {
-      margin: 12px 0;
-      text-align: justify;
+      color: #cbd5e1;
+      line-height: 1.8;
+      margin-bottom: 15px;
     }
+
     ul {
-      margin: 10px 0 10px 25px;
+      padding-left: 22px;
     }
+
     li {
-      margin-bottom: 6px;
+      margin-bottom: 10px;
+      color: #cbd5e1;
     }
-    strong {
-      color: #000;
+
+    .highlight-box {
+      background: rgba(0,207,255,0.15);
+      border-left: 4px solid #00CFFF;
+      padding: 24px;
+      border-radius: 16px;
+      margin: 30px 0;
+      backdrop-filter: blur(10px);
     }
+
+    .badge {
+      display: inline-block;
+      margin-right: 6px;
+      margin-top: 8px;
+      padding: 5px 12px;
+      border-radius: 14px;
+      background: rgba(0,207,255,0.2);
+      color: #00CFFF;
+      font-size: 0.8rem;
+      border: 1px solid rgba(0,207,255,0.3);
+    }
+
     footer {
+      background: rgba(0,10,30,0.7);
+      padding: 40px;
       text-align: center;
-      font-size: 0.9em;
-      color: #555;
-      margin-top: 40px;
-      border-top: 1px solid #eee;
-      padding-top: 15px;
+      backdrop-filter: blur(15px);
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #00CFFF, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .footer-contact,
+    .footer-note {
+      color: #94a3b8;
+      margin-top: 15px;
+      font-size: 0.9rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .content { padding: 25px; }
+      h1 { font-size: 1.8rem; }
     }
   </style>
 </head>
+
 <body>
-  <main>
-    <h1>Termos de Uso e Condições de Serviço — Mirage Wager</h1>
-    <p><strong>Última atualização:</strong> desgraça</p>
+  <div class="container">
+    <div class="header">
+      <img src="images/logo.png" alt="Mirage Wager Logo" class="logo">
+      <h1>Termos de Uso e Condições de Serviço</h1>
+      <div class="subtitle">Mirage Wager — Plataforma de Competição Eletrônica</div>
+      <div class="update-date"><strong>Última atualização:</strong> [inserir data]</div>
+    </div>
 
-    <p>O presente instrumento estabelece os <strong>Termos de Uso e Condições de Serviço</strong> aplicáveis ao acesso, participação e utilização do servidor denominado <strong>Mirage Wager</strong>, doravante referido apenas como “Mirage Wager” ou “Plataforma”. Ao acessar ou utilizar qualquer funcionalidade disponibilizada pelo Mirage Wager, o usuário declara ter lido, compreendido e concordado integralmente com todas as disposições abaixo descritas.</p>
+<div class="content">
+  <div class="section-card">
+    <p>O presente instrumento estabelece os <strong>Termos de Uso e Condições de Serviço</strong> aplicáveis ao acesso, participação e utilização do servidor denominado <strong>Mirage Wager</strong>, doravante referido apenas como "Mirage Wager" ou "Plataforma". Ao acessar ou utilizar qualquer funcionalidade disponibilizada pelo Mirage Wager, o usuário declara ter lido, compreendido e concordado integralmente com todas as disposições abaixo descritas.</p>
+  </div>
 
+  <div class="highlight-box">
+    <p><strong>⚠️ Nota importante:</strong> A adesão ao Mirage Wager e a participação em partidas, torneios ou quaisquer outras atividades disponibilizadas pela Plataforma implicam aceitação plena e irrestrita das disposições deste instrumento.</p>
+  </div>
+
+  <div class="section-card">
     <h2>Cláusula 1 — Do Objeto</h2>
-    <p>O presente termo tem por objeto disciplinar as condições de uso, participação e conduta dos usuários que interajam com a Plataforma Mirage Wager, voltada à realização de partidas eletrônicas competitivas no ambiente do jogo <em>Multi Theft Auto (MTA)</em>, em formato de confrontos entre jogadores ou equipes, com caráter de apostas em dinheiro real.</p>
-    <p>A adesão ao Mirage Wager e a participação em partidas, torneios ou quaisquer outras atividades disponibilizadas pela Plataforma implicam aceitação plena e irrestrita das disposições deste instrumento.</p>
+    <p>O presente termo tem por objeto disciplinar as condições de uso, participação e conduta dos usuários que interajam com a Plataforma Mirage Wager, voltada à realização de partidas competitivas por em quanto só no ambiente do jogo <em>Multi Theft Auto (MTA)</em>, em formato de confrontos entre jogadores ou equipes, com caráter de apostas em dinheiro real.</p>
+  </div>
 
+  <div class="section-card">
     <h2>Cláusula 2 — Do Acesso e Elegibilidade</h2>
     <p>O acesso à Plataforma é público e não condicionado à idade mínima. Qualquer pessoa poderá participar das atividades desde que esteja ciente e concorde com todas as condições aqui previstas.</p>
     <p>A administração da Plataforma reserva-se o direito de suspender ou excluir o acesso de qualquer usuário que viole as regras estabelecidas neste Termo, sem necessidade de aviso prévio e sem direito a restituição de valores eventualmente depositados.</p>
+  </div>
 
+  <div class="section-card">
     <h2>Cláusula 3 — Das Regras de Conduta</h2>
     <p>O usuário compromete-se a manter conduta ética, respeitosa e compatível com o ambiente competitivo da Plataforma.</p>
     <p>É terminantemente proibida a veiculação, divulgação ou manifestação de conteúdo de natureza sexual explícita (+18), bem como comentários, incitações ou discursos relacionados a morte, crimes sexuais, violência real ou quaisquer outros temas de cunho ilegal ou ofensivo que demonstrem intenção real de causar dano.</p>
     <p>A linguagem competitiva, inclusive o uso de xingamentos e provocações, será tolerada somente dentro do contexto de jogo, desde que não caracterize perseguição, ameaça, discriminação ou conduta dolosa.</p>
+  </div>
 
+  <div class="section-card">
     <h2>Cláusula 4 — Das Modificações e Recursos Técnicos Permitidos</h2>
     <p>É expressamente proibido o uso de quaisquer programas, scripts, aplicativos, <em>cheats</em>, injeções externas, modificações de memória, ou qualquer outro meio que altere o funcionamento original do jogo <em>Multi Theft Auto (MTA)</em> de forma maliciosa ou que conceda vantagem desleal.</p>
     <p>São permitidos, sob responsabilidade exclusiva do usuário, os seguintes recursos:</p>
@@ -87,21 +230,29 @@
       <li>Uso de miras externas ou outros recursos visuais que não alterem a integridade do software base;</li>
       <li>Qualquer funcionalidade explorável sem modificação externa, injeção de código ou alteração no cliente original do jogo.</li>
     </ul>
+    <div class="badge">Permitido</div>
+    <div class="badge">Responsabilidade do Usuário</div>
     <p>O Mirage Wager não se responsabiliza por perdas, falhas ou danos decorrentes da utilização desses recursos, ficando o usuário ciente de que a exploração de qualquer mecanismo é feita por sua exclusiva conta e risco.</p>
+  </div>
 
+  <div class="section-card">
     <h2>Cláusula 5 — Da Estrutura de Partidas e do Sistema de Apostas</h2>
     <p>Cada partida apostada é criada por um representante de equipe, que poderá participar individualmente ou acompanhado de até cinco (5) integrantes.</p>
     <p>O processo de criação de partida ocorre mediante o seguinte procedimento:</p>
     <ul>
-      <li>O representante cria uma sala de aposta no canal designado <strong>&lt;#1447043912555298942&gt;</strong>;</li>
-      <li>A proposta será publicada em <strong>&lt;#1447241716951158945&gt;</strong>;</li>
+      <li>O representante cria uma sala de aposta no canal designado <span class="channel-mention">#1447043912555298942</span>;</li>
+      <li>A proposta será publicada em <span class="channel-mention">#1447241716951158945</span>;</li>
       <li>Outro representante poderá aceitar a proposta, formalizando o confronto;</li>
       <li>Ambos os representantes serão alocados em uma sala privada juntamente com os administradores do servidor, onde serão realizadas as validações e os procedimentos de pagamento.</li>
     </ul>
     <p>As apostas deverão ser realizadas via transferência PIX, sendo considerado como valor total da aposta a soma integral dos valores depositados pelos dois representantes (ou pelas equipes correspondentes).</p>
     <p>Ao término da partida, o jogador ou equipe vencedora fará jus a 90% (noventa por cento) do valor total da aposta, cabendo à administração do Mirage Wager 10% (dez por cento) a título de taxa administrativa e operacional.</p>
+    <div class="badge">90% Vencedor</div>
+    <div class="badge">10% Taxa</div>
     <p>O simples ato de criar ou ingressar em uma sala implica aceitação automática e vinculante destes Termos de Uso.</p>
+  </div>
 
+  <div class="section-card">
     <h2>Cláusula 6 — Do Arrependimento, Remarcação e Devoluções</h2>
     <p>Após a efetivação do pagamento da aposta, não haverá possibilidade de reembolso sob qualquer justificativa, ressalvadas as hipóteses previstas nesta cláusula.</p>
     <p>O jogador que, após o pagamento, manifestar arrependimento, poderá solicitar o remarcamento da partida, desde que:</p>
@@ -111,7 +262,10 @@
       <li>O reagendamento ocorra em até 7 (sete) dias corridos a partir da data original da partida.</li>
     </ul>
     <p>Caso o jogador desistente não solicite o reagendamento dentro do prazo acima ou não compareça à nova data marcada, o valor depositado será automaticamente transferido ao adversário, que estava disponível para competir, e o desistente não fará jus à restituição.</p>
+    <div class="badge">Prazo: 7 dias</div>
+  </div>
 
+  <div class="section-card">
     <h2>Cláusula 7 — Das Penalidades</h2>
     <p>O descumprimento de qualquer disposição deste Termo poderá acarretar, conforme a gravidade da infração, as seguintes sanções:</p>
     <ul>
@@ -120,43 +274,50 @@
       <li>Banimento definitivo, com perda de quaisquer valores depositados ou ganhos pendentes.</li>
     </ul>
     <p>A aplicação de penalidades ocorrerá a critério exclusivo da administração do Mirage Wager, mediante análise dos fatos e provas disponíveis.</p>
+    <div class="badge">⚠️ Advertência</div>
+    <div class="badge">⏸️ Suspensão</div>
+    <div class="badge">🚫 Banimento</div>
+  </div>
 
+  <div class="section-card">
     <h2>Cláusula 8 — Da Propriedade Intelectual</h2>
-    <p>Todo o conteúdo visual, denominativo e conceitual referente ao Mirage Wager, incluindo, mas não se limitando a, nomes, marcas, logotipos, imagens, elementos gráficos, interfaces, design, identidade visual e demais criações intelectuais, é de titularidade exclusiva da administração do servidor.</p>
-    <p>É expressamente proibida a reprodução, utilização, cópia, divulgação, imitação, criação derivada ou qualquer forma de uso não autorizado desses elementos para fins comerciais, promocionais, ou para a criação de servidores, equipes, comunidades ou projetos similares.</p>
-    <p>O uso indevido dos ativos intelectuais do Mirage Wager poderá ensejar a adoção de medidas administrativas e legais cabíveis, incluindo a solicitação de remoção de conteúdo e responsabilização civil e material do infrator.</p>
+    <p>Todo o conteúdo visual, denominativo e conceitual referente ao Mirage Wager é de titularidade exclusiva da administração do servidor.</p>
+    <p>É expressamente proibida a reprodução, utilização, cópia ou criação de projetos similares sem autorização.</p>
+  </div>
 
+  <div class="section-card">
     <h2>Cláusula 9 — Das Responsabilidades e Isenções</h2>
-    <p>O Mirage Wager atua unicamente como plataforma de intermediação entre os jogadores, limitando-se a oferecer o ambiente de conexão e gerenciamento de partidas.</p>
-    <p>A administração da Plataforma não se responsabiliza por:</p>
+    <p>O Mirage Wager atua unicamente como plataforma de intermediação entre os jogadores.</p>
     <ul>
-      <li>Perdas financeiras decorrentes das apostas realizadas;</li>
-      <li>Desentendimentos, fraudes ou disputas entre usuários;</li>
-      <li>Uso indevido de recursos, bugs ou funcionalidades do jogo;</li>
-      <li>Quaisquer danos diretos, indiretos ou consequenciais resultantes da participação nas partidas.</li>
+      <li>Perdas financeiras decorrentes das apostas;</li>
+      <li>Disputas entre usuários;</li>
+      <li>Exploração de bugs;</li>
+      <li>Danos diretos ou indiretos.</li>
     </ul>
-    <p>O usuário reconhece que participa das apostas de forma livre, voluntária e consciente, assumindo integralmente os riscos inerentes à atividade.</p>
+  </div>
 
+  <div class="section-card">
     <h2>Cláusula 10 — Das Alterações dos Termos</h2>
-    <p>O Mirage Wager poderá, a seu exclusivo critério e a qualquer tempo, alterar, revisar ou atualizar o conteúdo destes Termos de Uso.</p>
-    <p>As alterações entrarão em vigor imediatamente após sua publicação, sendo de responsabilidade do usuário manter-se atualizado quanto à versão vigente.</p>
-    <p>O uso continuado da Plataforma após a publicação das alterações será interpretado como aceitação plena das novas condições.</p>
+    <p>Os Termos poderão ser alterados a qualquer momento, entrando em vigor após a publicação.</p>
+  </div>
 
+  <div class="section-card">
     <h2>Cláusula 11 — Das Disposições Finais</h2>
-    <p>A tolerância do Mirage Wager quanto ao eventual descumprimento de qualquer cláusula não implicará em renúncia de direito, nem afetará a validade das demais disposições.</p>
-    <p>Este instrumento constitui o acordo integral entre a Plataforma e o usuário, substituindo quaisquer entendimentos anteriores, orais ou escritos, acerca do mesmo objeto.</p>
-    <p>Na ausência de cláusula específica de jurisdição, eventuais controvérsias deverão ser solucionadas preferencialmente por meios administrativos e de consenso entre as partes.</p>
+    <p>Este instrumento constitui o acordo integral entre a Plataforma e o usuário.</p>
+  </div>
+</div>
+
 
     <footer>
-      <p><strong>Mirage Wager</strong><br>
-      Todos os direitos reservados.<br>
-      Contato: [inserir canal oficial de comunicação ou suporte]</p>
+      <div class="footer-logo">Mirage Wager</div>
+      <div class="footer-contact">
+        © 2024 Todos os direitos reservados<br>
+        Contato: [inserir canal oficial]
+      </div>
+      <div class="footer-note">
+        Documento legal válido para todos os usuários da plataforma.
+      </div>
     </footer>
-  </main>
+  </div>
 </body>
 </html>
-
-
-
-
-
