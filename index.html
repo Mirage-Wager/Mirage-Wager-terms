@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -30,10 +31,10 @@
       position: fixed;
       inset: -20%;
       background:
-        radial-gradient(circle at 20% 20%, rgba(0,207,255,0.35), transparent 40%),
-        radial-gradient(circle at 80% 30%, rgba(138,43,226,0.35), transparent 45%),
-        radial-gradient(circle at 50% 80%, rgba(0,255,170,0.25), transparent 40%),
-        radial-gradient(circle at 10% 90%, rgba(255,0,128,0.25), transparent 45%);
+        radial-gradient(circle at 20% 20%, rgba(0, 207, 255, 0.35), transparent 40%),
+        radial-gradient(circle at 80% 30%, rgba(138, 43, 226, 0.35), transparent 45%),
+        radial-gradient(circle at 50% 80%, rgba(0, 255, 170, 0.25), transparent 40%),
+        radial-gradient(circle at 10% 90%, rgba(255, 0, 128, 0.25), transparent 45%);
       filter: blur(120px);
       z-index: -2;
     }
@@ -42,7 +43,7 @@
       content: "";
       position: fixed;
       inset: 0;
-      background: linear-gradient(180deg, rgba(5,7,15,0.6), rgba(5,7,15,0.9));
+      background: linear-gradient(180deg, rgba(5, 7, 15, 0.6), rgba(5, 7, 15, 0.9));
       z-index: -1;
     }
 
@@ -51,16 +52,16 @@
       margin: 0 auto;
       background: rgba(10, 15, 30, 0.65);
       border-radius: 24px;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
       overflow: hidden;
       animation: fadeIn 0.6s ease-out;
     }
 
     .header {
-      background: linear-gradient(135deg, rgba(0,10,30,0.8), rgba(0,40,80,0.6));
+      background: linear-gradient(135deg, rgba(0, 10, 30, 0.8), rgba(0, 40, 80, 0.6));
       padding: 50px 40px 40px;
     }
 
@@ -81,8 +82,8 @@
       display: inline-block;
       padding: 10px 18px;
       border-radius: 20px;
-      background: rgba(0,207,255,0.15);
-      border: 1px solid rgba(0,207,255,0.3);
+      background: rgba(0, 207, 255, 0.15);
+      border: 1px solid rgba(0, 207, 255, 0.3);
       color: #00CFFF;
       font-size: 0.9rem;
     }
@@ -96,14 +97,14 @@
       border-radius: 18px;
       padding: 26px;
       margin-bottom: 28px;
-      border: 1px solid rgba(255,255,255,0.06);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       backdrop-filter: blur(10px);
       transition: 0.3s ease;
     }
 
     .section-card:hover {
       transform: translateY(-2px);
-      border-color: rgba(0,207,255,0.3);
+      border-color: rgba(0, 207, 255, 0.3);
     }
 
     h2 {
@@ -128,7 +129,7 @@
     }
 
     .highlight-box {
-      background: rgba(0,207,255,0.15);
+      background: rgba(0, 207, 255, 0.15);
       border-left: 4px solid #00CFFF;
       padding: 24px;
       border-radius: 16px;
@@ -142,18 +143,18 @@
       margin-top: 8px;
       padding: 5px 12px;
       border-radius: 14px;
-      background: rgba(0,207,255,0.2);
+      background: rgba(0, 207, 255, 0.2);
       color: #00CFFF;
       font-size: 0.8rem;
-      border: 1px solid rgba(0,207,255,0.3);
+      border: 1px solid rgba(0, 207, 255, 0.3);
     }
 
     footer {
-      background: rgba(0,10,30,0.7);
+      background: rgba(0, 10, 30, 0.7);
       padding: 40px;
       text-align: center;
       backdrop-filter: blur(15px);
-      border-top: 1px solid rgba(255,255,255,0.08);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .footer-logo {
@@ -172,13 +173,25 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @media (max-width: 768px) {
-      .content { padding: 25px; }
-      h1 { font-size: 1.8rem; }
+      .content {
+        padding: 25px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
     }
   </style>
 </head>
@@ -191,141 +204,190 @@
       <div class="update-date"><strong>Última atualização:</strong> 23/12/2025</div>
     </div>
 
-<div class="content">
-  <div class="section-card">
-    <p>O presente instrumento estabelece os <strong>Termos de Uso e Condições de Serviço</strong> aplicáveis ao acesso, participação e utilização do servidor denominado <strong>Mirage Wager</strong>, doravante referido apenas como "Mirage Wager" ou "Plataforma". Ao acessar ou utilizar qualquer funcionalidade disponibilizada pelo Mirage Wager, o usuário declara ter lido, compreendido e concordado integralmente com todas as disposições abaixo descritas.</p>
-  </div>
+    <div class="content">
+      <div class="section-card">
+        <p>O presente instrumento estabelece os <strong>Termos de Uso e Condições de Serviço</strong> aplicáveis ao
+          acesso, participação e utilização do servidor denominado <strong>Mirage Wager</strong>, doravante referido
+          apenas como "Mirage Wager" ou "Plataforma". Ao acessar ou utilizar qualquer funcionalidade disponibilizada
+          pelo Mirage Wager, o usuário declara ter lido, compreendido e concordado integralmente com todas as
+          disposições abaixo descritas.</p>
+      </div>
 
-  <div class="highlight-box">
-    <p><strong>⚠️ Nota importante:</strong> A adesão ao Mirage Wager e a participação em partidas, torneios ou quaisquer outras atividades disponibilizadas pela Plataforma implicam aceitação plena e irrestrita das disposições deste instrumento.</p>
-  </div>
+      <div class="highlight-box">
+        <p><strong>⚠️ Nota importante:</strong> A adesão ao Mirage Wager e a participação em partidas, torneios ou
+          quaisquer outras atividades disponibilizadas pela Plataforma implicam aceitação plena e irrestrita das
+          disposições deste instrumento.</p>
+      </div>
 
-  <div class="section-card">
-    <h2>Cláusula 1 — Do Objeto</h2>
-    <p>O presente termo tem por objeto disciplinar as condições de uso, participação e conduta dos usuários que interajam com a Plataforma Mirage Wager, voltada à realização de partidas competitivas por em quanto só no ambiente do jogo <em>Multi Theft Auto (MTA)</em>, em formato de confrontos entre jogadores ou equipes, com caráter de apostas.</p>
-  </div>
+      <div class="section-card">
+        <h2>Cláusula 1 — Do Objeto</h2>
+        <p>O presente termo tem por objeto disciplinar as condições de uso, participação e conduta dos usuários que
+          interajam com a Plataforma Mirage Wager, voltada à realização de partidas competitivas por em quanto só no
+          ambiente do jogo <em>Multi Theft Auto (MTA)</em>, em formato de confrontos entre jogadores ou equipes, com
+          caráter de apostas.</p>
+      </div>
 
-  <div class="section-card">
-    <h2>Cláusula 2 — Do Acesso e Elegibilidade</h2>
-    <p>O acesso à Plataforma é público e não condicionado à idade mínima. Qualquer pessoa poderá participar das atividades desde que esteja ciente e concorde com todas as condições aqui previstas.</p>
-    <p>A administração da Plataforma reserva-se o direito de suspender ou excluir o acesso de qualquer usuário que viole as regras estabelecidas neste Termo, sem necessidade de aviso prévio e sem direito a restituição de valores eventualmente depositados.</p>
-  </div>
+      <div class="section-card">
+        <h2>Cláusula 2 — Do Acesso e Elegibilidade</h2>
+        <p>O acesso à Plataforma é público e não condicionado à idade mínima. Qualquer pessoa poderá participar das
+          atividades desde que esteja ciente e concorde com todas as condições aqui previstas.</p>
+        <p>A administração da Plataforma reserva-se o direito de suspender ou excluir o acesso de qualquer usuário que
+          viole as regras estabelecidas neste Termo, sem necessidade de aviso prévio e sem direito a restituição de
+          valores eventualmente depositados.</p>
+      </div>
 
-  <div class="section-card">
-    <h2>Cláusula 3 — Das Regras de Conduta</h2>
-    <p>O usuário compromete-se a manter conduta ética, respeitosa e compatível com o ambiente competitivo da Plataforma.</p>
-    <p>É terminantemente proibida a veiculação, divulgação ou manifestação de conteúdo de natureza sexual explícita (+18), bem como comentários, incitações ou discursos relacionados a morte, crimes sexuais, violência real ou quaisquer outros temas de cunho ilegal ou ofensivo que demonstrem intenção real de causar dano.</p>
-    <p>A linguagem competitiva, inclusive o uso de xingamentos e provocações, será tolerada somente dentro do contexto de jogo, desde que não caracterize perseguição, ameaça, discriminação ou conduta dolosa.</p>
-  </div>
+      <div class="section-card">
+        <h2>Cláusula 3 — Das Regras de Conduta</h2>
+        <p>O usuário compromete-se a manter conduta ética, respeitosa e compatível com o ambiente competitivo da
+          Plataforma.</p>
+        <p>É terminantemente proibida a veiculação, divulgação ou manifestação de conteúdo de natureza sexual explícita
+          (+18), bem como comentários, incitações ou discursos relacionados a morte, crimes sexuais, violência real ou
+          quaisquer outros temas de cunho ilegal ou ofensivo que demonstrem intenção real de causar dano.</p>
+        <p>A linguagem competitiva, inclusive o uso de xingamentos e provocações, será tolerada somente dentro do
+          contexto de jogo, desde que não caracterize perseguição, ameaça, discriminação ou conduta dolosa.</p>
+      </div>
 
-  <div class="section-card">
-    <h2>Cláusula 4 — Das Modificações e Recursos Técnicos Permitidos</h2>
-    <p>É expressamente proibido o uso de quaisquer programas, scripts, aplicativos, <em>cheats</em>, injeções externas, modificações de memória, ou qualquer outro meio que altere o funcionamento original do jogo <em>Multi Theft Auto (MTA)</em> de forma maliciosa ou que conceda vantagem desleal.</p>
-    <p>São permitidos, sob responsabilidade exclusiva do usuário, os seguintes recursos:</p>
-    <ul>
-      <li>Utilização de macros, de qualquer natureza;</li>
-      <li>Exploração de bugs internos do jogo;</li>
-      <li>Bugs de pixel e demais falhas internas;</li>
-      <li>Uso de miras externas ou semelhantes;</li>
-      <li>Qualquer funcionalidade explorável sem modificação externa, injeção de código ou alteração no cliente original.</li>
-    </ul>
-    <div class="badge">Permitido</div>
-    <div class="badge">Responsabilidade do Usuário</div>
-    <p>O Mirage Wager não se responsabiliza por perdas, falhas ou danos decorrentes da utilização desses recursos, ficando o usuário ciente de que a exploração de qualquer mecanismo é feita por sua exclusiva conta e risco.</p>
-  </div>
+      <div class="section-card">
+        <h2>Cláusula 4 — Das Modificações e Recursos Técnicos Permitidos</h2>
+        <p>É expressamente proibido o uso de quaisquer programas, scripts, aplicativos, <em>cheats</em>, injeções
+          externas, modificações de memória, ou qualquer outro meio que altere o funcionamento original do jogo
+          <em>Multi Theft Auto (MTA)</em> de forma maliciosa ou que conceda vantagem desleal.</p>
+        <p>São permitidos, sob responsabilidade exclusiva do usuário, os seguintes recursos:</p>
+        <ul>
+          <li>Utilização de macros, de qualquer natureza;</li>
+          <li>Exploração de bugs internos do jogo;</li>
+          <li>Bugs de pixel e demais falhas internas;</li>
+          <li>Uso de miras externas ou semelhantes;</li>
+          <li>Qualquer funcionalidade explorável sem modificação externa, injeção de código ou alteração no cliente
+            original.</li>
+        </ul>
+        <div class="badge">Permitido</div>
+        <div class="badge">Responsabilidade do Usuário</div>
+        <p>O Mirage Wager não se responsabiliza por perdas, falhas ou danos decorrentes da utilização desses recursos,
+          ficando o usuário ciente de que a exploração de qualquer mecanismo é feita por sua exclusiva conta e risco.
+        </p>
+      </div>
 
-  <div class="section-card">
-    <h2>Cláusula 5 — Da Estrutura de Partidas e do Sistema de Apostas</h2>
-    <p>Cada partida apostada é criada por um representante de equipe, que poderá participar individualmente ou acompanhado de até cinco (9) integrantes.</p>
-    <p>O processo de criação de partida ocorre mediante o seguinte procedimento:</p>
-    <ul>
-      <li>O representante cria uma sala de aposta no canal designado;</li>
-      <li>A proposta será publicada no canal designado tambem;</li>
-      <li>Outro representante poderá aceitar a proposta, formalizando a sala;</li>
-      <li>Ambos os representantes serão alocados em uma sala privada juntamente com os administradores do servidor, onde serão realizadas as validações e os procedimentos de pagamento.</li>
-    </ul>
-    <p>As apostas deverão ser realizadas via transferência PIX, sendo considerado como valor total da aposta a soma integral dos valores depositados pelos dois representantes (ou pelas equipes correspondentes).</p>
-    <p>Ao término da partida, o jogador ou equipe vencedora fará jus a 90% (noventa por cento) do valor total da aposta, cabendo à administração do Mirage Wager 10% (dez por cento) a título de taxa administrativa e operacional.</p>
-    <div class="badge">90% Vencedor</div>
-    <div class="badge">10% Taxa</div>
-  </div>
+      <div class="section-card">
+        <h2>Cláusula 5 — Da Estrutura de Partidas e do Sistema de Apostas</h2>
+        <p>Cada partida apostada é criada por um representante de equipe, que poderá participar individualmente ou
+          acompanhado de até cinco (9) integrantes.</p>
+        <p>O processo de criação de partida ocorre mediante o seguinte procedimento:</p>
+        <ul>
+          <li>O representante cria uma sala de aposta no canal designado;</li>
+          <li>A proposta será publicada no canal designado tambem;</li>
+          <li>Outro representante poderá aceitar a proposta, formalizando a sala;</li>
+          <li>Ambos os representantes serão alocados em uma sala privada juntamente com os administradores do servidor,
+            onde serão realizadas as validações e os procedimentos de pagamento.</li>
+        </ul>
+        <p>As apostas deverão ser realizadas via transferência PIX, sendo considerado como valor total da aposta a soma
+          integral dos valores depositados pelos dois representantes (ou pelas equipes correspondentes).</p>
+        <p>Ao término da partida, o jogador ou equipe vencedora fará jus a 90% (noventa por cento) do valor total da
+          aposta, cabendo à administração do Mirage Wager 10% (dez por cento) a título de taxa administrativa e
+          operacional.</p>
 
-  <div class="section-card">
-    <h2>Cláusula 6 — Do Arrependimento, Remarcação e Devoluções</h2>
-    <p>Após a efetivação do pagamento da aposta, não haverá possibilidade de reembolso sob qualquer justificativa, ressalvadas as hipóteses previstas nesta cláusula.</p>
-    <p>O jogador que, após o pagamento, manifestar arrependimento, poderá solicitar o remarcamento da partida, desde que:</p>
-    <ul>
-      <li>Comunique imediatamente o arrependimento aos administradores;</li>
-      <li>Indique nova data e/ou horário para realização do confronto;</li>
-      <li>O reagendamento ocorra em até 7 (sete) dias corridos a partir da data original da partida.</li>
-    </ul>
-    <p>Caso o jogador desistente não solicite o reagendamento dentro do prazo acima ou não compareça à nova data marcada, o valor depositado será automaticamente transferido ao adversário causando W.O, que estava disponível para competir, e o desistente não fará jus à restituição.</p>
-    <div class="badge">Prazo: 7 dias</div>
-  </div>
-
-  <div class="section-card">
-    <h2>Cláusula 7 — Das Penalidades</h2>
-    <p>O descumprimento de qualquer disposição deste Termo poderá acarretar, conforme a gravidade da infração, as seguintes sanções para todas plataformas:</p>
-    <ul>
-      <li>Advertência formal;</li>
-      <li>Suspensão temporária de acesso à Plataforma;</li>
-      <li>Banimento definitivo, com perda de quaisquer valores depositados ou ganhos pendentes.</li>
-    </ul>
-    <p>A aplicação de penalidades ocorrerá a critério exclusivo da administração do Mirage Wager, mediante análise dos fatos e provas disponíveis.</p>
-    <div class="badge"> Advertência</div>
-    <div class="badge"> Suspensão</div>
-    <div class="badge"> Banimento</div>
-  </div>
-
-<div class="section-card">
-  <h2>Cláusula 8 — Da Propriedade Intelectual</h2>
-  <p>
-    Todo o acervo intelectual, compreendendo elementos visuais, textuais, conceituais, estruturais, operacionais, 
-    de design, marca, logotipia, identidade gráfica, arquitetura de informação, modelos funcionais e quaisquer 
-    outros componentes correlatos ao Mirage Wager, constitui propriedade exclusiva, integral e inalienável da 
-    administração do servidor, nos termos da legislação aplicável sobre direitos autorais, ativos intangíveis 
-    e proteção de marcas.
-  </p>
-
-  <p>
-    Fica terminantemente vedada, sem prévia, expressa e específica autorização formal da administração, a 
-    reprodução total ou parcial, distribuição, disponibilização, modificação, engenharia reversa, reutilização, 
-    derivação de obras, exploração comercial, replicação estrutural, ou criação de plataformas, ferramentas, 
-    sistemas, projetos, interfaces, modos de operação ou quaisquer serviços que possam ser considerados idênticos, 
-    análogos, inspirados ou derivados do Mirage Wager, sob pena de responsabilização civil, administrativa 
-    e, quando cabível, penal.
-  </p>
-
-  <p>
-    A utilização não autorizada de qualquer elemento protegido caracterizará violação aos direitos de propriedade 
-    intelectual, sujeitando o infrator às medidas legais pertinentes, incluindo, mas não se limitando a 
-    indenizações por perdas e danos, medidas de remoção de conteúdo, suspensão de acesso e demais providências 
-    cabíveis para salvaguarda dos interesses e do patrimônio imaterial da administração.
-  </p>
-</div>
+        <p><strong>5.1 — Do Formato de Partidas</strong></p>
+        <p>As partidas serão realizadas conforme a preferência acordada entre os participantes. Na ausência de acordo
+          prévio, será aplicado o formato padrão <strong>MD3 (Melhor de 3)</strong>, com <strong>10 pontos por
+            partida</strong>, onde serão disputadas até 3 (três) partidas com 10 (dez) rounds cada, sendo declarado
+          vencedor aquele que conquistar a maioria das partidas.</p>
 
 
-  <div class="section-card">
-    <h2>Cláusula 9 — Das Responsabilidades e Isenções</h2>
-    <p>O Mirage Wager atua unicamente como plataforma de intermediação entre os jogadores.</p>
-    <ul>
-      <li>Perdas financeiras decorrentes das apostas;</li>
-      <li>Disputas entre usuários;</li>
-      <li>Exploração de bugs;</li>
-      <li>Danos diretos ou indiretos.</li>
-    </ul>
-  </div>
+        <p><strong>5.2 — Do Direito à Inspeção por ScreenShare</strong></p>
+        <p>Todos os participantes de uma partida possuem o direito integral e irrestrito de solicitar a inspeção de tela
+          (ScreenShare / SS) de qualquer jogador envolvido no confronto, a qualquer momento, mediante suspeita
+          fundamentada ou por precaução.</p>
+        <p>Ao ser solicitada a inspeção, o jogador indicado deverá submeter-se imediatamente ao procedimento de
+          ScreenShare, permitindo a verificação completa de seu computador por parte da administração do Mirage Wager,
+          com o objetivo de identificar a presença de programas, modificações ou recursos não autorizados.</p>
+        <p>A recusa, demora injustificada ou tentativa de obstrução do processo de ScreenShare será considerada
+          confissão tácita de uso de meios ilícitos, sujeitando o jogador às penalidades previstas na Cláusula 7 deste
+          instrumento, incluindo banimento definitivo e perda integral dos valores apostados.</p>
 
-  <div class="section-card">
-    <h2>Cláusula 10 — Das Alterações dos Termos</h2>
-    <p>Os Termos poderão ser alterados a qualquer momento, entrando em vigor após a publicação.</p>
-  </div>
+      </div>
 
-  <div class="section-card">
-    <h2>Cláusula 11 — Das Disposições Finais</h2>
-    <p>Este instrumento constitui o acordo integral entre a Plataforma e o usuário.</p>
-  </div>
-</div>
+      <div class="section-card">
+        <h2>Cláusula 6 — Do Arrependimento, Remarcação e Devoluções</h2>
+        <p>Após a efetivação do pagamento da aposta, não haverá possibilidade de reembolso sob qualquer justificativa,
+          ressalvadas as hipóteses previstas nesta cláusula.</p>
+        <p>O jogador que, após o pagamento, manifestar arrependimento, poderá solicitar o remarcamento da partida, desde
+          que:</p>
+        <ul>
+          <li>Comunique imediatamente o arrependimento aos administradores;</li>
+          <li>Indique nova data e/ou horário para realização do confronto;</li>
+          <li>O reagendamento ocorra em até 7 (sete) dias corridos a partir da data original da partida.</li>
+        </ul>
+        <p>Caso o jogador desistente não solicite o reagendamento dentro do prazo acima ou não compareça à nova data
+          marcada, o valor depositado será automaticamente transferido ao adversário causando W.O, que estava disponível
+          para competir, e o desistente não fará jus à restituição.</p>
+        <div class="badge">Prazo: 7 dias</div>
+      </div>
+
+      <div class="section-card">
+        <h2>Cláusula 7 — Das Penalidades</h2>
+        <p>O descumprimento de qualquer disposição deste Termo poderá acarretar, conforme a gravidade da infração, as
+          seguintes sanções para todas plataformas:</p>
+        <ul>
+          <li>Advertência formal;</li>
+          <li>Suspensão temporária de acesso à Plataforma;</li>
+          <li>Banimento definitivo, com perda de quaisquer valores depositados ou ganhos pendentes.</li>
+        </ul>
+        <p>A aplicação de penalidades ocorrerá a critério exclusivo da administração do Mirage Wager, mediante análise
+          dos fatos e provas disponíveis.</p>
+        <div class="badge"> Advertência</div>
+        <div class="badge"> Suspensão</div>
+        <div class="badge"> Banimento</div>
+      </div>
+
+      <div class="section-card">
+        <h2>Cláusula 8 — Da Propriedade Intelectual</h2>
+        <p>
+          Todo o acervo intelectual, compreendendo elementos visuais, textuais, conceituais, estruturais, operacionais,
+          de design, marca, logotipia, identidade gráfica, arquitetura de informação, modelos funcionais e quaisquer
+          outros componentes correlatos ao Mirage Wager, constitui propriedade exclusiva, integral e inalienável da
+          administração do servidor, nos termos da legislação aplicável sobre direitos autorais, ativos intangíveis
+          e proteção de marcas.
+        </p>
+
+        <p>
+          Fica terminantemente vedada, sem prévia, expressa e específica autorização formal da administração, a
+          reprodução total ou parcial, distribuição, disponibilização, modificação, engenharia reversa, reutilização,
+          derivação de obras, exploração comercial, replicação estrutural, ou criação de plataformas, ferramentas,
+          sistemas, projetos, interfaces, modos de operação ou quaisquer serviços que possam ser considerados idênticos,
+          análogos, inspirados ou derivados do Mirage Wager, sob pena de responsabilização civil, administrativa
+          e, quando cabível, penal.
+        </p>
+
+        <p>
+          A utilização não autorizada de qualquer elemento protegido caracterizará violação aos direitos de propriedade
+          intelectual, sujeitando o infrator às medidas legais pertinentes, incluindo, mas não se limitando a
+          indenizações por perdas e danos, medidas de remoção de conteúdo, suspensão de acesso e demais providências
+          cabíveis para salvaguarda dos interesses e do patrimônio imaterial da administração.
+        </p>
+      </div>
+
+
+      <div class="section-card">
+        <h2>Cláusula 9 — Das Responsabilidades e Isenções</h2>
+        <p>O Mirage Wager atua unicamente como plataforma de intermediação entre os jogadores.</p>
+        <ul>
+          <li>Perdas financeiras decorrentes das apostas;</li>
+          <li>Disputas entre usuários;</li>
+          <li>Exploração de bugs;</li>
+          <li>Danos diretos ou indiretos.</li>
+        </ul>
+      </div>
+
+      <div class="section-card">
+        <h2>Cláusula 10 — Das Alterações dos Termos</h2>
+        <p>Os Termos poderão ser alterados a qualquer momento, entrando em vigor após a publicação.</p>
+      </div>
+
+      <div class="section-card">
+        <h2>Cláusula 11 — Das Disposições Finais</h2>
+        <p>Este instrumento constitui o acordo integral entre a Plataforma e o usuário.</p>
+      </div>
+    </div>
 
 
     <footer>
@@ -340,8 +402,5 @@
     </footer>
   </div>
 </body>
+
 </html>
-
-
-
-
