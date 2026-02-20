@@ -4,11 +4,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Terms of use ・ Mirage Wager</title>
+  <title>Termos de Uso ・ Mirage Wager</title>
   <link rel="icon" type="image/png" href="logos.png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --bg: #000000;
+      --surface: #0a0a0a;
+      --primary: #00CFFF;
+      --primary-dim: rgba(0, 207, 255, 0.1);
+      --text: #ffffff;
+      --text-muted: #94A3B8;
+      --border: rgba(255, 255, 255, 0.08);
+      --font-main: 'Outfit', 'Inter', sans-serif;
+      --transition-core: cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -16,391 +28,755 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      color: #e2e8f0;
+      font-family: var(--font-main);
+      color: var(--text);
+      background-color: var(--bg);
       min-height: 100vh;
       overflow-x: hidden;
-      position: relative;
-      padding: 20px;
-      background: #05070f;
+      line-height: 1.6;
+      padding-top: 45px;
+      /* Space for games banner */
     }
 
-    /* ===== FUNDO ARTÍSTICO COLORIDO ===== */
-    body::before {
-      content: "";
+    /* --- GAMES OPERATION BAR --- */
+    .games-banner {
       position: fixed;
-      inset: -20%;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(0, 207, 255, 0.35), transparent 40%),
-        radial-gradient(circle at 80% 30%, rgba(138, 43, 226, 0.35), transparent 45%),
-        radial-gradient(circle at 50% 80%, rgba(0, 255, 170, 0.25), transparent 40%),
-        radial-gradient(circle at 10% 90%, rgba(255, 0, 128, 0.25), transparent 45%);
-      filter: blur(120px);
-      z-index: -2;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 45px;
+      background: rgba(10, 10, 10, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      padding: 0 20px;
     }
 
-    body::after {
+    .game-node {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: var(--transition-core) 0.3s;
+      cursor: default;
+    }
+
+    .game-node::before {
       content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--border);
+      transition: inherit;
+    }
+
+    .game-node.active {
+      color: var(--primary);
+    }
+
+    .game-node.active::before {
+      background: var(--primary);
+      box-shadow: 0 0 10px var(--primary);
+    }
+
+    .game-node:hover {
+      color: var(--text);
+    }
+
+    .status-legend {
+      margin-left: auto;
+      display: flex;
+      gap: 15px;
+      padding: 0 20px;
+      border-left: 1px solid var(--border);
+    }
+
+    .legend-item {
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .legend-item.active {
+      color: var(--primary);
+    }
+
+    /* --- ANTIGRAVITY TEXTURE & BACKGROUND --- */
+    #noise-overlay {
       position: fixed;
       inset: 0;
-      background: linear-gradient(180deg, rgba(5, 7, 15, 0.6), rgba(5, 7, 15, 0.9));
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>');
+    }
+
+    .ag-bg {
+      position: fixed;
+      inset: 0;
       z-index: -1;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      background: rgba(10, 15, 30, 0.65);
-      border-radius: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
       overflow: hidden;
-      animation: fadeIn 0.6s ease-out;
     }
 
-    .header {
-      background: linear-gradient(135deg, rgba(0, 10, 30, 0.8), rgba(0, 40, 80, 0.6));
-      padding: 50px 40px 40px;
+    .ag-sphere {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      animation: float 20s infinite alternate ease-in-out;
+    }
+
+    .s1 {
+      width: 500px;
+      height: 500px;
+      background: var(--primary);
+      top: -10%;
+      left: -10%;
+    }
+
+    .s2 {
+      width: 400px;
+      height: 400px;
+      background: #8a2be2;
+      bottom: -5%;
+      right: -5%;
+      animation-delay: -5s;
+    }
+
+    .s3 {
+      width: 300px;
+      height: 300px;
+      background: #00ffaa;
+      top: 40%;
+      right: 10%;
+      animation-delay: -10s;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      100% {
+        transform: translate(10%, 10%) scale(1.1);
+      }
+    }
+
+    /* --- LAYOUT --- */
+    .app-wrapper {
+      display: flex;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+      gap: 60px;
+    }
+
+    /* --- SIDE NAVIGATION --- */
+    .side-nav {
+      width: 300px;
+      height: calc(100vh - 45px);
+      position: sticky;
+      top: 45px;
+      padding: 40px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary) transparent;
+    }
+
+    .side-nav::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .side-nav::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .side-nav::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 10px;
+      box-shadow: 0 0 10px var(--primary);
+    }
+
+    @media (max-width: 1100px) {
+      .side-nav {
+        display: none;
+      }
+
+      .app-wrapper {
+        padding: 0 20px;
+      }
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: var(--transition-core) 0.3s;
+      padding: 8px 0;
+      border-left: 2px solid transparent;
+      padding-left: 15px;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--primary);
+      border-left-color: var(--primary);
+    }
+
+    /* --- MAIN CONTENT --- */
+    main {
+      flex: 1;
+      padding: 60px 0 120px;
+      max-width: 850px;
+    }
+
+    header {
+      margin-bottom: 80px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .logo-container img {
+      width: 48px;
     }
 
     h1 {
-      font-size: 2.4rem;
-      background: linear-gradient(90deg, #ffffff, #00CFFF);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(to bottom right, #fff 30%, var(--primary));
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .subtitle {
-      color: #94a3b8;
-      margin-top: 10px;
-    }
-
-    .update-date {
-      margin-top: 20px;
-      display: inline-block;
-      padding: 10px 18px;
-      border-radius: 20px;
-      background: rgba(0, 207, 255, 0.15);
-      border: 1px solid rgba(0, 207, 255, 0.3);
-      color: #00CFFF;
+    .meta-info {
+      display: flex;
+      gap: 20px;
+      align-items: center;
       font-size: 0.9rem;
+      color: var(--text-muted);
     }
 
-    .content {
-      padding: 40px;
+    .update-badge {
+      background: var(--primary-dim);
+      color: var(--primary);
+      padding: 4px 12px;
+      border-radius: 100px;
+      border: 1px solid rgba(0, 207, 255, 0.2);
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+    }
+
+    /* --- CLAUSES & CARDS --- */
+    .intro-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 30px;
+      border-radius: 20px;
+      margin-bottom: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .intro-box::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--primary);
     }
 
     .section-card {
-      background: rgba(15, 23, 42, 0.55);
-      border-radius: 18px;
-      padding: 26px;
-      margin-bottom: 28px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      backdrop-filter: blur(10px);
-      transition: 0.3s ease;
+      margin-bottom: 80px;
     }
 
-    .section-card:hover {
-      transform: translateY(-2px);
-      border-color: rgba(0, 207, 255, 0.3);
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .clause-number {
+      font-family: monospace;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.2rem;
+      opacity: 0.8;
     }
 
     h2 {
-      color: #00CFFF;
-      margin-bottom: 15px;
-      font-size: 1.4rem;
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .article {
+      margin-bottom: 25px;
+      padding-left: 45px;
+      position: relative;
+    }
+
+    .article-num {
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-family: monospace;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 600;
     }
 
     p {
-      color: #cbd5e1;
-      line-height: 1.8;
       margin-bottom: 15px;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    p strong {
+      color: var(--text);
     }
 
     ul {
-      padding-left: 22px;
+      list-style: none;
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
     li {
-      margin-bottom: 10px;
-      color: #cbd5e1;
+      position: relative;
+      padding-left: 25px;
+      color: var(--text-muted);
     }
 
-    .highlight-box {
-      background: rgba(0, 207, 255, 0.15);
-      border-left: 4px solid #00CFFF;
-      padding: 24px;
-      border-radius: 16px;
-      margin: 30px 0;
-      backdrop-filter: blur(10px);
+    li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 6px;
+      height: 2px;
+      background: var(--primary);
+    }
+
+    .badge-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
     }
 
     .badge {
-      display: inline-block;
-      margin-right: 6px;
-      margin-top: 8px;
-      padding: 5px 12px;
-      border-radius: 14px;
-      background: rgba(0, 207, 255, 0.2);
-      color: #00CFFF;
-      font-size: 0.8rem;
-      border: 1px solid rgba(0, 207, 255, 0.3);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
     }
 
+    .badge.active {
+      background: var(--primary-dim);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* --- FOOTER --- */
     footer {
-      background: rgba(0, 10, 30, 0.7);
-      padding: 40px;
+      border-top: 1px solid var(--border);
+      padding: 60px 0;
+      margin-top: 100px;
       text-align: center;
-      backdrop-filter: blur(15px);
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .footer-logo {
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       font-weight: 700;
-      background: linear-gradient(90deg, #00CFFF, #ffffff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+      display: block;
     }
 
-    .footer-contact,
-    .footer-note {
-      color: #94a3b8;
-      margin-top: 15px;
-      font-size: 0.9rem;
+    .footer-details {
+      color: var(--text-muted);
+      font-size: 0.85rem;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    /* --- SCROLL ANIMATIONS --- */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s var(--transition-core);
     }
 
-    @media (max-width: 768px) {
-      .content {
-        padding: 25px;
-      }
-
-      h1 {
-        font-size: 1.8rem;
-      }
+    [data-reveal].revealed {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <div class="header">
-      <h1>Termos de Uso e Condições de Serviço</h1>
-      <div class="subtitle">Todas as informações sobre regras do mirage wager em geral sempre estarão aqui.</div>
-      <div class="update-date"><strong>Última atualização:</strong> 23/12/2025</div>
+  <div class="games-banner">
+    <div class="game-node active">MTA:SA</div>
+    <div class="game-node">FiveM</div>
+    <div class="status-legend">
+      <span class="legend-item active">● Operando</span>
+      <span class="legend-item">● Em Breve</span>
     </div>
-
-    <div class="content">
-      <div class="section-card">
-        <p>O presente instrumento estabelece os <strong>Termos de Uso e Condições de Serviço</strong> aplicáveis ao
-          acesso, participação e utilização do servidor denominado <strong>Mirage Wager</strong>, doravante referido
-          apenas como "Mirage Wager" ou "Plataforma". Ao acessar ou utilizar qualquer funcionalidade disponibilizada
-          pelo Mirage Wager, o usuário declara ter lido, compreendido e concordado integralmente com todas as
-          disposições abaixo descritas.</p>
-      </div>
-
-      <div class="highlight-box">
-        <p><strong>⚠️ Nota importante:</strong> A adesão ao Mirage Wager e a participação em partidas, torneios ou
-          quaisquer outras atividades disponibilizadas pela Plataforma implicam aceitação plena e irrestrita das
-          disposições deste instrumento.</p>
-      </div>
-
-      <div class="section-card">
-        <h2>Cláusula 1 — Do Objeto</h2>
-        <p>O presente termo tem por objeto disciplinar as condições de uso, participação e conduta dos usuários que
-          interajam com a Plataforma Mirage Wager, voltada à realização de partidas competitivas por em quanto só no
-          ambiente do jogo <em>Multi Theft Auto (MTA)</em>, em formato de confrontos entre jogadores ou equipes, com
-          caráter de apostas.</p>
-      </div>
-
-      <div class="section-card">
-        <h2>Cláusula 2 — Do Acesso e Elegibilidade</h2>
-        <p>O acesso à Plataforma é público e não condicionado à idade mínima. Qualquer pessoa poderá participar das
-          atividades desde que esteja ciente e concorde com todas as condições aqui previstas.</p>
-        <p>A administração da Plataforma reserva-se o direito de suspender ou excluir o acesso de qualquer usuário que
-          viole as regras estabelecidas neste Termo, sem necessidade de aviso prévio e sem direito a restituição de
-          valores eventualmente depositados.</p>
-      </div>
-
-      <div class="section-card">
-        <h2>Cláusula 3 — Das Regras de Conduta</h2>
-        <p>O usuário compromete-se a manter conduta ética, respeitosa e compatível com o ambiente competitivo da
-          Plataforma.</p>
-        <p>É terminantemente proibida a veiculação, divulgação ou manifestação de conteúdo de natureza sexual explícita
-          (+18), bem como comentários, incitações ou discursos relacionados a morte, crimes sexuais, violência real ou
-          quaisquer outros temas de cunho ilegal ou ofensivo que demonstrem intenção real de causar dano.</p>
-        <p>A linguagem competitiva, inclusive o uso de xingamentos e provocações, será tolerada somente dentro do
-          contexto de jogo, desde que não caracterize perseguição, ameaça, discriminação ou conduta dolosa.</p>
-      </div>
-
-      <div class="section-card">
-        <h2>Cláusula 4 — Das Modificações e Recursos Técnicos Permitidos</h2>
-        <p>É expressamente proibido o uso de quaisquer programas, scripts, aplicativos, <em>cheats</em>, injeções
-          externas, modificações de memória, ou qualquer outro meio que altere o funcionamento original do jogo
-          <em>Multi Theft Auto (MTA)</em> de forma maliciosa ou que conceda vantagem desleal.</p>
-        <p>São permitidos, sob responsabilidade exclusiva do usuário, os seguintes recursos:</p>
-        <ul>
-          <li>Utilização de macros, de qualquer natureza;</li>
-          <li>Exploração de bugs internos do jogo;</li>
-          <li>Bugs de pixel e demais falhas internas;</li>
-          <li>Uso de miras externas ou semelhantes;</li>
-          <li>Qualquer funcionalidade explorável sem modificação externa, injeção de código ou alteração no cliente
-            original.</li>
-        </ul>
-        <div class="badge">Permitido</div>
-        <div class="badge">Responsabilidade do Usuário</div>
-        <p>O Mirage Wager não se responsabiliza por perdas, falhas ou danos decorrentes da utilização desses recursos,
-          ficando o usuário ciente de que a exploração de qualquer mecanismo é feita por sua exclusiva conta e risco.
-        </p>
-      </div>
-
-      <div class="section-card">
-        <h2>Cláusula 5 — Da Estrutura de Partidas e do Sistema de Apostas</h2>
-        <p>Cada partida apostada é criada por um representante de equipe, que poderá participar individualmente ou
-          acompanhado de até cinco (9) integrantes.</p>
-        <p>O processo de criação de partida ocorre mediante o seguinte procedimento:</p>
-        <ul>
-          <li>O representante cria uma sala de aposta no canal designado;</li>
-          <li>A proposta será publicada no canal designado tambem;</li>
-          <li>Outro representante poderá aceitar a proposta, formalizando a sala;</li>
-          <li>Ambos os representantes serão alocados em uma sala privada juntamente com os administradores do servidor,
-            onde serão realizadas as validações e os procedimentos de pagamento.</li>
-        </ul>
-        <p>As apostas deverão ser realizadas via transferência PIX, sendo considerado como valor total da aposta a soma
-          integral dos valores depositados pelos dois representantes (ou pelas equipes correspondentes).</p>
-        <p>Ao término da partida, o jogador ou equipe vencedora fará jus a 90% (noventa por cento) do valor total da
-          aposta, cabendo à administração do Mirage Wager 10% (dez por cento) a título de taxa administrativa e
-          operacional.</p>
-
-        <p><strong>5.1 — Do Formato de Partidas</strong></p>
-        <p>As partidas serão realizadas conforme a preferência acordada entre os participantes. Na ausência de acordo
-          prévio, será aplicado o formato padrão <strong>MD3 (Melhor de 3)</strong>, com <strong>10 pontos por
-            partida</strong>, onde serão disputadas até 3 (três) partidas com 10 (dez) rounds cada, sendo declarado
-          vencedor aquele que conquistar a maioria das partidas.</p>
-
-
-        <p><strong>5.2 — Do Direito à Inspeção por ScreenShare</strong></p>
-        <p>Todos os participantes de uma partida possuem o direito integral e irrestrito de solicitar a inspeção de tela
-          (ScreenShare / SS) de qualquer jogador envolvido no confronto, a qualquer momento, mediante suspeita
-          fundamentada ou por precaução.</p>
-        <p>Ao ser solicitada a inspeção, o jogador indicado deverá submeter-se imediatamente ao procedimento de
-          ScreenShare, permitindo a verificação completa de seu computador por parte da administração do Mirage Wager,
-          com o objetivo de identificar a presença de programas, modificações ou recursos não autorizados.</p>
-        <p>A recusa, demora injustificada ou tentativa de obstrução do processo de ScreenShare será considerada
-          confissão tácita de uso de meios ilícitos, sujeitando o jogador às penalidades previstas na Cláusula 7 deste
-          instrumento, incluindo banimento definitivo e perda integral dos valores apostados.</p>
-
-      </div>
-
-      <div class="section-card">
-        <h2>Cláusula 6 — Do Arrependimento, Remarcação e Devoluções</h2>
-        <p>Após a efetivação do pagamento da aposta, não haverá possibilidade de reembolso sob qualquer justificativa,
-          ressalvadas as hipóteses previstas nesta cláusula.</p>
-        <p>O jogador que, após o pagamento, manifestar arrependimento, poderá solicitar o remarcamento da partida, desde
-          que:</p>
-        <ul>
-          <li>Comunique imediatamente o arrependimento aos administradores;</li>
-          <li>Indique nova data e/ou horário para realização do confronto;</li>
-          <li>O reagendamento ocorra em até 7 (sete) dias corridos a partir da data original da partida.</li>
-        </ul>
-        <p>Caso o jogador desistente não solicite o reagendamento dentro do prazo acima ou não compareça à nova data
-          marcada, o valor depositado será automaticamente transferido ao adversário causando W.O, que estava disponível
-          para competir, e o desistente não fará jus à restituição.</p>
-        <div class="badge">Prazo: 7 dias</div>
-      </div>
-
-      <div class="section-card">
-        <h2>Cláusula 7 — Das Penalidades</h2>
-        <p>O descumprimento de qualquer disposição deste Termo poderá acarretar, conforme a gravidade da infração, as
-          seguintes sanções para todas plataformas:</p>
-        <ul>
-          <li>Advertência formal;</li>
-          <li>Suspensão temporária de acesso à Plataforma;</li>
-          <li>Banimento definitivo, com perda de quaisquer valores depositados ou ganhos pendentes.</li>
-        </ul>
-        <p>A aplicação de penalidades ocorrerá a critério exclusivo da administração do Mirage Wager, mediante análise
-          dos fatos e provas disponíveis.</p>
-        <div class="badge"> Advertência</div>
-        <div class="badge"> Suspensão</div>
-        <div class="badge"> Banimento</div>
-      </div>
-
-      <div class="section-card">
-        <h2>Cláusula 8 — Da Propriedade Intelectual</h2>
-        <p>
-          Todo o acervo intelectual, compreendendo elementos visuais, textuais, conceituais, estruturais, operacionais,
-          de design, marca, logotipia, identidade gráfica, arquitetura de informação, modelos funcionais e quaisquer
-          outros componentes correlatos ao Mirage Wager, constitui propriedade exclusiva, integral e inalienável da
-          administração do servidor, nos termos da legislação aplicável sobre direitos autorais, ativos intangíveis
-          e proteção de marcas.
-        </p>
-
-        <p>
-          Fica terminantemente vedada, sem prévia, expressa e específica autorização formal da administração, a
-          reprodução total ou parcial, distribuição, disponibilização, modificação, engenharia reversa, reutilização,
-          derivação de obras, exploração comercial, replicação estrutural, ou criação de plataformas, ferramentas,
-          sistemas, projetos, interfaces, modos de operação ou quaisquer serviços que possam ser considerados idênticos,
-          análogos, inspirados ou derivados do Mirage Wager, sob pena de responsabilização civil, administrativa
-          e, quando cabível, penal.
-        </p>
-
-        <p>
-          A utilização não autorizada de qualquer elemento protegido caracterizará violação aos direitos de propriedade
-          intelectual, sujeitando o infrator às medidas legais pertinentes, incluindo, mas não se limitando a
-          indenizações por perdas e danos, medidas de remoção de conteúdo, suspensão de acesso e demais providências
-          cabíveis para salvaguarda dos interesses e do patrimônio imaterial da administração.
-        </p>
-      </div>
-
-
-      <div class="section-card">
-        <h2>Cláusula 9 — Das Responsabilidades e Isenções</h2>
-        <p>O Mirage Wager atua unicamente como plataforma de intermediação entre os jogadores.</p>
-        <ul>
-          <li>Perdas financeiras decorrentes das apostas;</li>
-          <li>Disputas entre usuários;</li>
-          <li>Exploração de bugs;</li>
-          <li>Danos diretos ou indiretos.</li>
-        </ul>
-      </div>
-
-      <div class="section-card">
-        <h2>Cláusula 10 — Das Alterações dos Termos</h2>
-        <p>Os Termos poderão ser alterados a qualquer momento, entrando em vigor após a publicação.</p>
-      </div>
-
-      <div class="section-card">
-        <h2>Cláusula 11 — Das Disposições Finais</h2>
-        <p>Este instrumento constitui o acordo integral entre a Plataforma e o usuário.</p>
-      </div>
-    </div>
-
-
-    <footer>
-      <div class="footer-logo">Mirage Wager</div>
-      <div class="footer-contact">
-        © 2026 Todos os direitos reservados<br>
-        Contato: miragewager@gmail.com
-      </div>
-      <div class="footer-note">
-        Documento legal válido para regras para todos os usuários da plataforma.
-      </div>
-    </footer>
   </div>
+
+  <div id="noise-overlay"></div>
+
+  <div class="ag-bg">
+    <div class="ag-sphere s1"></div>
+    <div class="ag-sphere s2"></div>
+    <div class="ag-sphere s3"></div>
+  </div>
+
+  <div class="app-wrapper">
+    <nav class="side-nav">
+      <a href="#intro" class="nav-link">Introdução</a>
+      <a href="#cl1" class="nav-link">Objeto</a>
+      <a href="#cl2" class="nav-link">Elegibilidade</a>
+      <a href="#cl3" class="nav-link">Conduta</a>
+      <a href="#cl4" class="nav-link">Recursos</a>
+      <a href="#cl5" class="nav-link">Apostas</a>
+      <a href="#cl6" class="nav-link">Devoluções</a>
+      <a href="#cl7" class="nav-link">Penalidades</a>
+      <a href="#cl8" class="nav-link">Propriedade</a>
+      <a href="#cl9" class="nav-link">Isenções</a>
+      <a href="#cl10" class="nav-link">Modificações</a>
+      <a href="#cl11" class="nav-link">Disposições</a>
+    </nav>
+
+    <main>
+      <header data-reveal id="intro">
+        <div class="logo-container">
+          <img src="logos.png" alt="Mirage Wager Logo">
+          <span class="update-badge">Mirage Wager SDK</span>
+        </div>
+        <h1><span class="gradient-text">Termos de Uso e Condições de Serviço</span></h1>
+        <div class="meta-info">
+          <span>O protocolo oficial de conduta da plataforma.</span>
+          <span class="update-badge">Atualizado: 20/02/2026</span>
+        </div>
+      </header>
+
+      <div class="intro-box" data-reveal>
+        <p>O presente instrumento estabelece os <strong>Termos de Uso e Condições de Serviço</strong> aplicáveis ao
+          acesso, participação e utilização do servidor <strong>Mirage Wager</strong>. Ao utilizar qualquer
+          funcionalidade, o usuário declara concordar integralmente com estas disposições.</p>
+        <p><strong>⚠️ Nota:</strong> A participação em atividades implica aceitação plena e irrestrita das regras
+          vigentes.</p>
+      </div>
+
+      <!-- CLAUSE 1 -->
+      <section class="section-card" id="cl1" data-reveal>
+        <div class="section-header">
+          <span class="clause-number">01</span>
+          <h2>Do Objeto e Escopo</h2>
+        </div>
+        <div class="article">
+          <span class="article-num">1.1</span>
+          <p>O presente instrumento jurídico tem por escopo fundamental disciplinar a utilização sistêmica da plataforma
+            Mirage Wager, especificamente voltada à operacionalização de salas de confronto (Wagers) no ecossistema
+            <em>Multi Theft Auto (MTA)</em>, mediante a integração de sistemas automatizados de gestão e validação.
+          </p>
+        </div>
+      </section>
+
+      <!-- CLAUSE 2 -->
+      <section class="section-card" id="cl2" data-reveal>
+        <div class="section-header">
+          <span class="clause-number">02</span>
+          <h2>Acesso e Elegibilidade</h2>
+        </div>
+        <div class="article">
+          <span class="article-num">2.1</span>
+          <p>A Plataforma Mirage Wager configura-se como um ambiente de acesso público e não condicionado a critérios de
+            idade mínima compulsória, sob a premissa fundamental de que o usuário, ao ingressar, declara ciência
+            inequívoca e aceitação integral dos presentes termos e diretrizes operacionais.</p>
+        </div>
+        <div class="article">
+          <span class="article-num">2.2</span>
+          <p>A administração reserva-se a prerrogativa técnica de suspender ou restringir o provimento de acessos em
+            virtude de desconformidades técnicas ou violações severas ao protocolo de conduta, sem obrigatoriedade de
+            notificação prévia ou dever de restituição pecuniária.</p>
+        </div>
+      </section>
+
+      <!-- CLAUSE 3 -->
+      <section class="section-card" id="cl3" data-reveal>
+        <div class="section-header">
+          <span class="clause-number">03</span>
+          <h2>Protocolo de Conduta e Ética</h2>
+        </div>
+        <div class="article">
+          <span class="article-num">3.1</span>
+          <p>O usuário obriga-se a manter um padrão comportamental estritamente ético e civilizado. A veiculação de
+            conteúdo de cunho sexual explícito (+18), incitação à violência no mundo real ou apologia a condutas
+            delituosas é terminantemente vedada.</p>
+        </div>
+        <div class="article">
+          <span class="article-num">3.2</span>
+          <p>A utilização de linguagem ofensiva e competitiva é integralmente livre e permitida no contexto das sessões
+            de jogo, desde que tais manifestações não transcendam para cenários de perseguição sistemática, assédio ou
+            discriminação dolosa amparada por lei.</p>
+        </div>
+      </section>
+
+      <!-- CLAUSE 4 -->
+      <section class="section-card" id="cl4" data-reveal>
+        <div class="section-header">
+          <span class="clause-number">04</span>
+          <h2>Recursos Técnicos e Explorações</h2>
+        </div>
+        <div class="article">
+          <span class="article-num">4.1</span>
+          <p>Fica terminantemente proibida a implementação de <em>cheats</em>, métodos de injeção externa, manipuladores
+            de memória ou qualquer software de terceiros que tutele a integridade do cliente original do MTA.</p>
+        </div>
+        <div class="article">
+          <span class="article-num">4.2</span>
+          <p>Constituem recursos e explorações tecnicamente permitidos, sob total responsabilidade e risco do operador:
+          </p>
+          <ul>
+            <li>Utilização de macros de hardware ou software de qualquer natureza;</li>
+            <li>Exploração de falhas sistêmicas, bugs intrínsecos à plataforma (MTA) e falhas de pixel (pixel gaps);
+            </li>
+            <li>Uso de miras externas, overlays estáticos ou modificadores de interface não-invasivos.</li>
+          </ul>
+          <div class="badge-group">
+            <span class="badge active">Permitido</span>
+            <span class="badge">Operacional</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CLAUSE 5 -->
+      <section class="section-card" id="cl5" data-reveal>
+        <div class="section-header">
+          <span class="clause-number">05</span>
+          <h2>Sistema de Salas (Wagers)</h2>
+        </div>
+        <div class="article">
+          <span class="article-num">5.1</span>
+          <p>As instâncias de confronto (salas) admitem a composição de até 10 integrantes por equipe. O workflow
+            operacional compreende a submissão de proposta, aceitação recíproca e alocação em ambiente virtual de
+            validação técnica.</p>
+        </div>
+        <div class="article">
+          <span class="article-num">5.2</span>
+          <p>As transações financeiras são processadas exclusivamente via protocolo PIX. A plataforma Mirage Wager
+            retém, a título de taxa operacional de manutenção, o percentual de <strong>10%</strong> do montante bruto,
+            destinando <strong>90%</strong> ao vencedor da instância.</p>
+        </div>
+        <div class="article">
+          <span class="article-num">5.3</span>
+          <p>As partidas realizadas no ecossistema MTA são regidas pelo regime de 20 rounds. A equipe que atingir
+            primeiramente a marca de 20 rounds vitoriosos será declarada vencedora da sala por mérito esportivo.</p>
+        </div>
+        <div class="article">
+          <span class="article-num">5.4</span>
+          <p><strong>Inspeção de Integridade:</strong> O procedimento de ScreenShare (SS) poderá ser requisitado pela
+            auditoria a qualquer momento. A recusa ou obstrução deste ato implica em confissão de irregularidade,
+            acarretando derrota imediata por W.O. e banimento.</p>
+        </div>
+      </section>
+
+      <!-- CLAUSE 6 -->
+      <section class="section-card" id="cl6" data-reveal>
+        <div class="section-header">
+          <span class="clause-number">06</span>
+          <h2>Logística de Agendamento</h2>
+        </div>
+        <div class="article">
+          <span class="article-num">6.1</span>
+          <p>Uma vez confirmada a alocação de recursos, não haverá política de estorno. O reagendamento para uma nova
+            janela temporal é facultado em até 24 horas mediante protocolo de comunicação célere.</p>
+        </div>
+        <div class="article">
+          <span class="article-num">6.2</span>
+          <p>O não comparecimento ou falta de prontidão na janela temporal acordada resultará em declaração de derrota
+            por W.O., ensejando a perda integral da garantia depositada para o adversário de ambos os lados envolvidos.
+          </p>
+        </div>
+      </section>
+
+      <!-- CLAUSE 7 -->
+      <section class="section-card" id="cl7" data-reveal>
+        <div class="section-header">
+          <span class="clause-number">07</span>
+          <h2>Penalidades Admnistrativas</h2>
+        </div>
+        <div class="article">
+          <span class="article-num">7.1</span>
+          <p>Sanções incluem Advertência, Suspensão Temporária ou Banimento Definitivo com perda total de fundos.</p>
+        </div>
+        <div class="badge-group">
+          <span class="badge">Advertência</span>
+          <span class="badge">Suspensão</span>
+          <span class="badge">Banimento</span>
+        </div>
+      </section>
+
+      <!-- CLAUSE 8 -->
+      <section class="section-card" id="cl8" data-reveal>
+        <div class="section-header">
+          <span class="clause-number">08</span>
+          <h2>Propriedade Intelectual</h2>
+        </div>
+        <div class="article">
+          <span class="article-num">8.1</span>
+          <p>Todo o acervo visual, estrutural e identidade visual do Mirage Wager é propriedade inalienável da
+            administração.</p>
+        </div>
+        <div class="article">
+          <span class="article-num">8.2</span>
+          <p>É proibida a replicação estrutural ou criação de serviços análogos sem autorização prévia por escrito.</p>
+        </div>
+      </section>
+
+      <!-- CLAUSE 9 -->
+      <section class="section-card" id="cl9" data-reveal>
+        <div class="section-header">
+          <span class="clause-number">09</span>
+          <h2>Isenções e Riscos</h2>
+        </div>
+        <div class="article">
+          <span class="article-num">9.1</span>
+          <p>A Mirage Wager atua estritamente como agente facilitador de instâncias competitivas, não sendo responsável
+            por perdas decorrentes da atuação técnica dos usuários ou eventos de força maior.</p>
+        </div>
+      </section>
+
+      <!-- CLAUSE 10 -->
+      <section class="section-card" id="cl10" data-reveal>
+        <div class="section-header">
+          <span class="clause-number">10</span>
+          <h2>Modificações e Aditamentos</h2>
+        </div>
+        <div class="article">
+          <span class="article-num">10.1</span>
+          <p>A administração reserva-se o direito soberano de realizar aditamentos analógicos ou modificações
+            estruturais nestes termos a qualquer tempo, visando a preservação da integridade do ecossistema Mirage
+            Wager.</p>
+        </div>
+      </section>
+
+      <!-- CLAUSE 11 -->
+      <section class="section-card" id="cl11" data-reveal>
+        <div class="section-header">
+          <span class="clause-number">11</span>
+          <h2>Disposições Finais</h2>
+        </div>
+        <div class="article">
+          <span class="article-num">11.1</span>
+          <p>Este documento constitui a base principiológica e operacional integral entre a plataforma e seus usuários,
+            revogando quaisquer entendimentos pretéritos expressos ou tácitos.</p>
+        </div>
+      </section>
+
+      <footer>
+        <span class="footer-logo gradient-text">Mirage Wager Foundation</span>
+        <div class="footer-details">
+          &copy; 2026 Mirage Wager. Digital Protocol.<br>
+          <a href="mailto:miragewager@gmail.com"
+            style="color: var(--primary); text-decoration: none;">miragewager@gmail.com</a>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // --- REVEAL ANIMATION ON SCROLL ---
+    const observerOptions = {
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+
+    // --- BASIC SOURCE PROTECTION (DETERRENT) ---
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+    document.addEventListener('keydown', (e) => {
+      // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+      if (
+        e.keyCode === 123 ||
+        (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) ||
+        (e.ctrlKey && e.keyCode === 85)
+      ) {
+        e.preventDefault();
+        return false;
+      }
+    });
+
+    // --- SIDE NAV ACTIVE STATE ---
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('.section-card, header');
+
+    window.addEventListener('scroll', () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 150) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(current)) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
